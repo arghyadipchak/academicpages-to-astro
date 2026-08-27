@@ -1,0 +1,6 @@
+[submodule "academicpages-jekyll"]
+	path = academicpages-jekyll
+	url = https://github.com/academicpages/academicpages.github.io.git
+[submodule "academicpages-astro"]
+	path = academicpages-astro
+	url = https://github.com/arghyadipchak/academicpages-astro.git
