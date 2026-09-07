@@ -41,6 +41,7 @@ Last Updated: Migration Complete & Architecture Finalized (Dual-Submodule Meta-R
 | **Phase 8** | Modern UX & Academic Enhancements | Completed | 8.1, 8.2, 8.3, 8.4, 8.5 |
 | **Phase 9** | Architecture Decoupling & Sanitization | Completed | 9.1, 9.2, 9.3 |
 | **Phase 10** | Advanced Content & Rich Media Rendering Engine | Completed | 10.1, 10.2, 10.3, 10.4, 10.5 |
+| **Phase 11** | Dynamic Base URL Resolution & GitHub Pages Pipeline | Completed | 11.1, 11.2, 11.3 |
 
 ---
 
@@ -105,3 +106,11 @@ Last Updated: Migration Complete & Architecture Finalized (Dual-Submodule Meta-R
 - **Academic SEO**: Added Google Scholar & Highwire Press citation meta tags for automatic scholarly indexing
 - **Production Target**: Configured official repository (`arghyadipchak/academicpages-astro`) and GitHub Pages deployment URL (`https://arghyadipchak.github.io/academicpages-astro`)
 - **Test Suite**: Verified comprehensive test coverage across Playwright browser test suite on Desktop and Mobile viewports
+
+### [Phase 11: Dynamic Base URL Resolution & GitHub Pages Pipeline]
+- **Base URL Resilience**: Created `src/utils/url.ts` with `resolveUrl` helper function ensuring all internal links, assets, icons, search queries, and navigation work seamlessly whether deployed at the root domain or in a subpath repository (`https://<username>.github.io/<repo-name>/`)
+- **Astro Config Dynamic Resolution**: Configured `astro.config.ts` to automatically extract `site` and `base` from CI environment variables (`ASTRO_SITE`, `ASTRO_BASE`) or fallback to `siteConfig.baseurl` and `siteConfig.url`
+- **CI/CD Integration**: In `.github/workflows/ci.yml`, plumbed `actions/configure-pages` outputs directly into `pnpm build` and `pnpm test`
+- **Playwright Test Suite Compatibility**: Updated `tests/smoke.spec.ts` and `playwright.config.ts` with base-path awareness and dual IPv4/IPv6 localhost binding for 100% test reliability
+- **Zero-Error Quality Gate**: Verified full quality gate and test suite (0 errors, 0 warnings, 42/42 Playwright tests passing)
+
